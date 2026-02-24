@@ -1,0 +1,456 @@
+/* ===== THEME VARIABLES ===== */
+:root {
+    --bg-main: radial-gradient(circle at top, #184b45, #050b0b);
+    --text-main: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --accent: #00ffcc;
+    --nav-bg: rgba(0, 0, 0, 0.45);
+}
+
+/* Light mode */
+body.light {
+    --bg-main: #f8fafc;
+    --text-main: #0f172a;
+    --card-bg: #ffffff;
+    --accent: #0f766e;
+    --nav-bg: rgba(255, 255, 255, 0.8);
+}
+
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg-main);
+    color: var(--text-main);
+    padding-top: 120px;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ===== INSTRUCTION BAR ===== */
+#instruction-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(90deg, #00ffcc, #00e6b8);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    z-index: 3000;
+    color: #000;
+}
+
+#instruction-text {
+    white-space: nowrap;
+    padding-left: 100%;
+    animation: scrollText 18s linear infinite;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+@keyframes scrollText {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+#close-instruction {
+    position: absolute;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+    position: fixed;
+    top: 40px;
+    width: 100%;
+    z-index: 2000;
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    padding: 10px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav>div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+nav img {
+    width: 42px;
+    height: 42px;
+}
+
+nav h3 {
+    color: var(--accent);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+nav a {
+    color: var(--text-main);
+    margin-left: 22px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+#theme-toggle {
+    background: rgba(255, 255, 255, 0.12);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+/* ===== HERO ===== */
+header {
+    min-height: 90vh;
+    padding-top: 40px;
+    text-align: center;
+}
+
+.logo-wrapper img {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    box-shadow: 0 0 55px rgba(0, 255, 204, .9);
+    margin-bottom: 26px;
+}
+
+header h1 {
+    font-size: 52px;
+    color: var(--accent);
+    letter-spacing: 3px;
+}
+
+header p {
+    font-size: 14px;
+    opacity: .85;
+}
+
+.hero-btn {
+    margin-top: 26px;
+    padding: 12px 36px;
+    background: var(--accent);
+    color: #000;
+    font-weight: 600;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* ===== COUNTDOWN ===== */
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 26px;
+}
+
+#countdown div {
+    background: rgba(255, 255, 255, .1);
+    padding: 14px 18px;
+    border-radius: 14px;
+    min-width: 80px;
+}
+
+#countdown span {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* ===== SECTIONS ===== */
+section {
+    padding: 90px 8%;
+}
+
+h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 60px;
+    color: var(--accent);
+}
+
+/* ===== DEPARTMENTS (HOME) ===== */
+.department-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* ===== DEPARTMENT SELECTION CARDS ===== */
+
+.department-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 40px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Card base */
+.dept-card {
+    position: relative;
+    padding: 36px 20px;
+    background: linear-gradient(135deg,
+            rgba(0, 255, 204, 0.12),
+            rgba(0, 0, 0, 0.35));
+    border-radius: 24px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    backdrop-filter: blur(14px);
+    transition: all 0.35s ease;
+    overflow: hidden;
+}
+
+/* Glow border */
+.dept-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 1.5px;
+    background: linear-gradient(120deg, transparent, #00ffcc, transparent);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+/* Hover effect */
+.dept-card:hover {
+    transform: translateY(-12px) scale(1.04);
+    box-shadow: 0 0 45px rgba(0, 255, 204, 0.6);
+    color: #00ffcc;
+}
+
+/* Subtle shine animation */
+.section-title {
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 18px rgba(0, 255, 204, 0.6);
+}
+
+.dept-card::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle,
+            rgba(255, 255, 255, 0.12),
+            transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.dept-card:hover::after {
+    opacity: 1;
+}
+
+.dept-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 0 30px rgba(0, 255, 204, .6);
+    color: var(--accent);
+}
+
+/* ===== GALLERY ===== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* ===== CERTIFICATES ===== */
+.certificate-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+}
+
+.certificate-box img {
+    width: 100%;
+    max-width: 520px;
+    border-radius: 18px;
+    box-shadow: 0 0 30px rgba(0, 255, 204, 0.35);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+.certificate-box img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 45px rgba(0, 255, 204, 0.7);
+}
+
+.certificate-text {
+    font-size: 18px;
+    opacity: 0.9;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+/* ===== FAQ ===== */
+.faq-item {
+    background: rgba(255, 255, 255, .08);
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 14px;
+    cursor: pointer;
+}
+
+.faq-question {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.faq-arrow {
+    font-size: 14px;
+    color: #00ffcc;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-arrow {
+    transform: rotate(180deg);
+}
+
+.faq-item h4 {
+    color: #00ffcc;
+}
+
+.faq-item p {
+    display: none;
+    font-size: 14px;
+    margin-top: 10px;
+    opacity: .85;
+}
+
+.faq-item.active p {
+    display: block;
+}
+
+
+/* ===== FOOTER ===== */
+.footer-pro {
+    background: linear-gradient(90deg, #0b132b, #020617);
+    color: #9ca3af;
+    padding: 40px 8% 18px;
+    margin-top: 80px;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    margin-bottom: 25px;
+}
+
+.footer-pro h3,
+.footer-pro h4 {
+    color: #fff;
+}
+
+.footer-pro a {
+    display: block;
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.footer-pro a:hover {
+    color: #00ffcc;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    padding-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Highlight developer name */
+.footer-bottom .dev-credit a {
+    color: var(--accent);
+    /* same accent as website */
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* Hover effect */
+.footer-bottom .dev-credit a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    body {
+        padding-top: 140px;
+    }
+
+    header h1 {
+        font-size: 34px;
+    }
+
+    section {
+        padding: 70px 6%;
+    }
+
+    .logo-wrapper img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .dept-card {
+        font-size: 16px;
+        padding: 28px 18px;
+    }
+}
